@@ -5,6 +5,7 @@ import com.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -20,4 +21,7 @@ public class TodoService {
 
     }
 
+    public List<Todo> getAllTodos() {
+        return null;
+    }
 }
