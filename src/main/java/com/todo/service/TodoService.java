@@ -42,7 +42,10 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
-    public void deleteTodo(int i) {
-
+    public void deleteTodo(Integer id) {
+        if (Objects.isNull(id)) {
+            System.out.println("id is empty!");
+        }
+        todoRepository.deleteById(id);
     }
 }
