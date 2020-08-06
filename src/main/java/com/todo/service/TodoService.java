@@ -22,6 +22,10 @@ public class TodoService {
     }
 
     public List<Todo> getAllTodos() {
-        return null;
+        List<Todo> todos = todoRepository.findAll();
+        if (todos.isEmpty()) {
+            System.out.println("findAll is empty!");
+        }
+        return todos;
     }
 }

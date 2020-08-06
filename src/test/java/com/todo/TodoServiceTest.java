@@ -40,7 +40,7 @@ public class TodoServiceTest {
         Todo firstTodo = new Todo(1, "mandy1", false, new Date());
         Todo secondTodo = new Todo(2, "mandy2", false, new Date());
         List<Todo> todos = Arrays.asList(firstTodo, secondTodo);
-        given(mockedTodoRepository.saveAll(todos)).willReturn(todos);
+        given(mockedTodoRepository.findAll()).willReturn(todos);
         //when
         List<Todo> actualTodos = todoService.getAllTodos();
         //then
