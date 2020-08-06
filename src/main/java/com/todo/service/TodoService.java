@@ -28,4 +28,8 @@ public class TodoService {
         }
         return todos;
     }
+
+    public Todo updateTodo(int i, Todo beforeTodo) {
+        return null;
+    }
 }

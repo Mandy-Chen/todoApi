@@ -12,6 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
@@ -45,5 +46,18 @@ public class TodoServiceTest {
         List<Todo> actualTodos = todoService.getAllTodos();
         //then
         assertEquals(todos, actualTodos);
+    }
+
+    @Test
+    void should_updated_todo_when_put_todo_given_todo() {
+        //given
+        Todo beforeTodo = new Todo(1, "mandy", false, null);
+        Todo updatedTodo = new Todo(1, "mandy", true, null);
+        //when
+        given(mockedTodoRepository.findById(1)).willReturn(Optional.of(beforeTodo));
+        given(mockedTodoRepository.save(beforeTodo)).willReturn(updatedTodo);
+        Todo actualUpdatedTodo = todoService.updateTodo(1, beforeTodo);
+        //then
+        assertEquals(updatedTodo, actualUpdatedTodo);
     }
 }
