@@ -41,4 +41,8 @@ public class TodoService {
         todo.setStatus(updateTodo.getStatus());
         return todoRepository.save(todo);
     }
+
+    public void deleteTodo(int i) {
+
+    }
 }

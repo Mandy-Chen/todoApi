@@ -16,6 +16,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
 public class TodoServiceTest {
@@ -59,5 +61,14 @@ public class TodoServiceTest {
         Todo actualUpdatedTodo = todoService.updateTodo(1, updatedTodo);
         //then
         assertEquals(updatedTodo, actualUpdatedTodo);
+    }
+
+    @Test
+    void should_return_nothing_when_delete_todo_given_todo() {
+        //given
+        //when
+        todoService.deleteTodo(1);
+        //then
+        verify(mockedTodoRepository, times(1)).deleteById(1);
     }
 }
