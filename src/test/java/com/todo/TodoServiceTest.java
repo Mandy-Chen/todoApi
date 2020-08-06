@@ -56,7 +56,7 @@ public class TodoServiceTest {
         //when
         given(mockedTodoRepository.findById(1)).willReturn(Optional.of(beforeTodo));
         given(mockedTodoRepository.save(beforeTodo)).willReturn(updatedTodo);
-        Todo actualUpdatedTodo = todoService.updateTodo(1, beforeTodo);
+        Todo actualUpdatedTodo = todoService.updateTodo(1, updatedTodo);
         //then
         assertEquals(updatedTodo, actualUpdatedTodo);
     }

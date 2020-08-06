@@ -29,7 +29,16 @@ public class TodoService {
         return todos;
     }
 
-    public Todo updateTodo(int i, Todo beforeTodo) {
-        return null;
+    public Todo updateTodo(Integer id, Todo updateTodo) {
+        if (Objects.isNull(id)) {
+            System.out.println("id is empty!");
+        }
+        Todo todo = todoRepository.findById(id).orElse(null);
+        if (Objects.isNull(todo)) {
+            System.out.println("todo is empty!");
+        }
+        todo.setContent(updateTodo.getContent());
+        todo.setStatus(updateTodo.getStatus());
+        return todoRepository.save(todo);
     }
 }
