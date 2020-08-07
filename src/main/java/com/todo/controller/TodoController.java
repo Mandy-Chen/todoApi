@@ -32,4 +32,11 @@ public class TodoController {
     }
 
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteTodo(@PathVariable Integer id) {
+        todoService.deleteTodo(id);
+        return "delete success!";
+    }
+
 }
