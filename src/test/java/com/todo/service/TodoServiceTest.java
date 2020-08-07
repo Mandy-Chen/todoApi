@@ -1,8 +1,7 @@
-package com.todo;
+package com.todo.service;
 
 import com.todo.model.Todo;
 import com.todo.repository.TodoRepository;
-import com.todo.service.TodoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
