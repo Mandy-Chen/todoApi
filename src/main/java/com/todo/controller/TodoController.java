@@ -21,20 +21,23 @@ public class TodoController {
     @Autowired
     TodoMapper todoMapper;
 
-    @GetMapping("/")
+    @GetMapping
     public List<TodoResponse> getAllTodos() {
+        System.out.println("getAllTodos");
         return todoService.getAllTodos().stream().map(TodoMapper::toTodoResponse).collect(Collectors.toList());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TodoResponse addTodo(@RequestBody TodoRequest todoRequest) {
+        System.out.println("add");
         return toTodoResponse(todoService.addTodo(todoMapper.toTodo(todoRequest)));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TodoResponse updateTodo(@PathVariable Integer id, @RequestBody TodoRequest todoRequest) {
+        System.out.println("updateTodo");
         return toTodoResponse(todoService.updateTodo(id, todoMapper.toTodo(todoRequest)));
     }
 
@@ -42,6 +45,7 @@ public class TodoController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteTodo(@PathVariable Integer id) {
+        System.out.println("deleteTodo");
         todoService.deleteTodo(id);
         return "delete success!";
     }
