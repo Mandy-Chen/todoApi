@@ -1,23 +1,25 @@
 package com.todo.exception;
 
+import com.todo.model.Todo;
 import com.todo.service.TodoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TodoApiException {
+public class TodoApiExceptionTest {
     @Autowired
     TodoService todoService;
     @Test
-    void should_return_exception_when_add_given_nothing() {
+    void should_return_exception_when_add_given_nothing() throws ApiException {
         //given
-        Throwable exception = assertThrows(ApiException.class, () -> {
-            throw new IllegalArgumentException("a message");
-        });
+
         //when
-        todoService.addTodo(null);
+        todoService.addTodo(new Todo());
+        Throwable exception = assertThrows(ApiException.class, () -> {
+            throw new ApiException("Todo cannot be empty");
+        });
         //then
-        assertEquals("a message", exception.getMessage());
+        assertEquals("Todo cannot be empty", exception.getMessage());
     }
 }

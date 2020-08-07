@@ -1,5 +1,6 @@
 package com.todo.service;
 
+import com.todo.exception.ApiException;
 import com.todo.model.Todo;
 import com.todo.repository.TodoRepository;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class TodoServiceTest {
     TodoService todoService;
 
     @Test
-    void should_return_todo_when_add_todo_given_todo() {
+    void should_return_todo_when_add_todo_given_todo() throws ApiException {
         //given
         Todo todo = new Todo(1, "mandy", false, new Date());
         given(mockedTodoRepository.save(todo)).willReturn(todo);

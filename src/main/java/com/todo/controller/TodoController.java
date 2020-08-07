@@ -2,6 +2,7 @@ package com.todo.controller;
 
 import com.todo.dto.TodoRequest;
 import com.todo.dto.TodoResponse;
+import com.todo.exception.ApiException;
 import com.todo.mapper.TodoMapper;
 import com.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,23 +30,20 @@ public class TodoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TodoResponse addTodo(@RequestBody TodoRequest todoRequest) {
-        System.out.println("add");
+    public TodoResponse addTodo(@RequestBody TodoRequest todoRequest) throws ApiException {
         return toTodoResponse(todoService.addTodo(todoMapper.toTodo(todoRequest)));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public TodoResponse updateTodo(@PathVariable Integer id, @RequestBody TodoRequest todoRequest) {
-        System.out.println("updateTodo");
+    public TodoResponse updateTodo(@PathVariable Integer id, @RequestBody TodoRequest todoRequest) throws ApiException {
         return toTodoResponse(todoService.updateTodo(id, todoMapper.toTodo(todoRequest)));
     }
 
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteTodo(@PathVariable Integer id) {
-        System.out.println("deleteTodo");
+    public String deleteTodo(@PathVariable Integer id) throws ApiException {
         todoService.deleteTodo(id);
         return "delete success!";
     }
