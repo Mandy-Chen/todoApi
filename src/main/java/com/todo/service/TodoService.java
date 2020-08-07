@@ -1,7 +1,9 @@
 package com.todo.service;
 
+import com.todo.exception.ApiException;
 import com.todo.model.Todo;
 import com.todo.repository.TodoRepository;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
