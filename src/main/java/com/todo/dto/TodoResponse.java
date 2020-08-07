@@ -2,20 +2,20 @@ package com.todo.dto;
 
 import java.util.Date;
 
-public class TodoRequest {
+public class TodoResponse {
     private Integer id;
     private String content;
     private Boolean status;
     private Date createTime;
 
-    public TodoRequest(Integer id, String content, Boolean status, Date createTime) {
+    public TodoResponse() {
+    }
+
+    public TodoResponse(Integer id, String content, Boolean status, Date createTime) {
         this.id = id;
         this.content = content;
         this.status = status;
         this.createTime = createTime;
-    }
-
-    public TodoRequest() {
     }
 
     public Integer getId() {
