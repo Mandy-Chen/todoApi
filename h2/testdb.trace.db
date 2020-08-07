@@ -1,3 +1,0 @@
-2020-08-06 11:25:25 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "STATUS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
-STATUS [42001-200]

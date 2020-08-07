@@ -4,7 +4,9 @@ import com.todo.dto.TodoRequest;
 import com.todo.dto.TodoResponse;
 import com.todo.model.Todo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TodoMapper {
     public Todo toTodo(TodoRequest todoRequest) {
         return new Todo(
