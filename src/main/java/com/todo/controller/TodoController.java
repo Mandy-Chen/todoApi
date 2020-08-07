@@ -25,5 +25,11 @@ public class TodoController {
         return todoService.addTodo(todo);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Todo updateTodo(@PathVariable Integer id, @RequestBody Todo todo) {
+        return todoService.updateTodo(id, todo);
+    }
+
 
 }
