@@ -1,8 +1,8 @@
 package com.todo.controller;
 
+import com.todo.dto.TodoRequest;
 import com.todo.dto.TodoResponse;
 import com.todo.mapper.TodoMapper;
-import com.todo.model.Todo;
 import com.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,14 +28,14 @@ public class TodoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TodoResponse addTodo(@RequestBody Todo todo) {
-        return toTodoResponse(todoService.addTodo(todo));
+    public TodoResponse addTodo(@RequestBody TodoRequest todoRequest) {
+        return toTodoResponse(todoService.addTodo(todoMapper.toTodo(todoRequest)));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public TodoResponse updateTodo(@PathVariable Integer id, @RequestBody Todo todo) {
-        return toTodoResponse(todoService.updateTodo(id, todo));
+    public TodoResponse updateTodo(@PathVariable Integer id, @RequestBody TodoRequest todoRequest) {
+        return toTodoResponse(todoService.updateTodo(id, todoMapper.toTodo(todoRequest)));
     }
 
 
