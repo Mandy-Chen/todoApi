@@ -36,7 +36,6 @@ public class TodoService {
         if (Objects.isNull(todo)) {
             throw new ApiException("Todo doesn't exist！");
         }
-        todo.setContent(updateTodo.getContent());
         todo.setStatus(updateTodo.getStatus());
         return todoRepository.save(todo);
     }
